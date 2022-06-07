@@ -126,16 +126,33 @@ const Component = (props) {
 export default pure(Component);
 ```
 
-#### What is state in React?
+### What is state in React?
+The State of a component is an object that holds some information that may change over the lifetime of the component.The difference is while a “normal” variable “disappears” when their function exits, the state variables are preserved by React.
+### What are props in React?
+“Props” is a special keyword in React, which stands for properties and is being used for passing data from one component to another. The important part here is that data with props are being passed in a uni-directional flow. (one way from parent to child)
+Furthermore, props data is read-only, which means that data coming from the parent should not be changed by child components.
+```
+function PropComponent({ name }) {
+  return (<p>Your name {name}!</p>);
+}
+ReactDOM.render(
+    <PropComponent name="john" />,
+  document.getElementById("root")
+);
+```
+### What is the difference between state and props?
+The key difference between props and state is that state is internal and controlled by the component itself, it can be changed (Mutable).states are initialize on component mount.They are used for rendering dynamic changes within component.
+while props are external and controlled by whatever renders the component.Props can't be changed.(Immutable).
 
-#### What are props in React?
-
-#### What is the difference between state and props?
-
-#### Why should we not update the state directly?
-
-#### What is the purpose of callback function as an argument of setState()?
-
+### Why should we not update the state directly?
+- NEVER mutate this.state directly, as calling setState() afterwards may replace the mutation you made. Treat this.state as if it were immutable.
+setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value.
+setState() will always trigger a re-render unless conditional rendering logic is implemented in shouldComponentUpdate(). If mutable objects are being used and the logic cannot be implemented in shouldComponentUpdate(), calling setState() only when the new state differs from the previous state will avoid unnecessary re-renders.
+- when we update the state of a component all it's children are going to be rendered as well. or our entire component tree rendered.
+but when i say our entire component tree is rendered that doesn’t mean that the entire DOM is updated. when a component is rendered we basically get a react element, so that is updating our virtual dom. React will then look at the virtual DOM, it also has a copy of the old virtual DOM, that is why we shouldn’t update the state directly, so we can have two different object references in memory, we have the old virtual DOM as well as the new virtual DOM.
+then react will figure out what is changed and based on that it will update the real DOM accordingly .
+### What is the purpose of callback function as an argument of setState()?
+setState works in an asynchronous way. That means after calling setState the this.state variable is not immediately changed. so if you want to perform an action immediately after setting state on a state variable and then return a result, a callback will be useful.
 #### What is the difference between HTML and React event handling?
 
 #### How to bind methods or event handlers in JSX callbacks?
