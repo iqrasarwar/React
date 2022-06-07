@@ -1,9 +1,9 @@
 # React
-#### What is React?
+### What is React?
 React is a declarative, efficient, and flexible, free and open-source front-end JavaScript library for building user interfaces based on UI components. It lets you compose complex UIs from small and isolated pieces of code called “components”. It is maintained by Meta and a community of individual developers and companies.<br />
 > Imperative code instructs JavaScript on how it should perform each step. With declarative code, we tell JavaScript what we want to be done, and let JavaScript take care of performing the steps.
 
-#### What are the major features of React?
+### What are the major features of React?
 - JavaScript XML or JSX (JavaScript Syntax Extension)
 - Virtual DOM
 - One-way data binding
@@ -12,7 +12,7 @@ React is a declarative, efficient, and flexible, free and open-source front-end 
 - Component Based Architecture
 - Conditional statements
 
-#### What is the difference between Element and Component?
+### What is the difference between Element and Component?
 **React Element**: It is the basic building block in a react application, it is an object representation of a virtual DOM node. React Element contains both type and property. It may contain other Elements in its props. React Element does not have any methods, making it light and faster to render than components.
 You can create elements using following ways.
 - JSX  `const element =<h1></h1>;`
@@ -29,7 +29,7 @@ function Hello(user){
 }
 const element = <Hello name="John"/>
 ```
-#### What is JSX?
+### What is JSX?
 JSX is a JavaScript Extension Syntax used in React to easily write HTML and JavaScript together. JSX produces React “elements”. React doesn’t require using JSX, but it is helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.
 - You can put any valid JavaScript expression inside the curly braces in JSX.
 ```
@@ -60,7 +60,7 @@ const element = (
 ```
 - You can never inject anything that’s not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent XSS (cross-site-scripting) attacks.
 
-#### How to create components in React?
+### How to create components in React?
 There are two ways to define components in ReactJS.
 - **React functional components** can be any JavaScript function that returns the HTML. These functional components can also accept “props”, meaning properties or data. As these are JavaScript functions or extensions of JavaScript functions, they can also be created from the ES6 convention of the arrow function.There should only be one return per component.
 ```
@@ -87,90 +87,122 @@ class App extends Component {
   }
 }
 ```
-#### When to use a Class Component over a Function Component?
+### When to use a Class Component over a Function Component?
 React Functional components were supposed to be stateless components having no support for life cycle methods.
-But with the introduction of React hooks functional components can provide state managment via useState, useReducer hooks. They support lifecycle methods via the useEffect, useLayoutEffect hooks, and memoization via the memo HOC. Functional components are encouraged to used by meta & React. For furture info refer to :
-[Class vs Functional Components](https://stackoverflow.com/questions/36097965/when-to-use-es6-class-based-react-components-vs-functional-es6-react-components)
+But with the introduction of React hooks functional components can provide state managment via useState, useReducer hooks. They support lifecycle methods via the useEffect, useLayoutEffect hooks, and memoization via the memo HOC. Functional components are encouraged to used by meta & React.<br />
+For furture info refer to : [Class vs Functional Components](https://stackoverflow.com/questions/36097965/when-to-use-es6-class-based-react-components-vs-functional-es6-react-components)
 
-#### What are Pure Components?
+### What are Pure Components?
+A React component is considered pure if it renders the same output for the same state and props. For this type of class component, React provides the PureComponent base class. Class components that extend the React. PureComponent class are treated as pure components.
+```
+class Pure extends React.PureComponent{
+   render(){
+      return <h1>This is Pure Component!</h1>;
+   }
+}
+```
+The difference between them is that React.Component doesn’t implement shouldComponentUpdate(), but React.PureComponent implements it with a shallow prop and state comparison. If your React component’s render() function renders the same result given the same props and state, you can use React.PureComponent for a performance boost in some cases.
+A function is said to be pure if the return value is determined by its input values only and the return value is always the same for the same input values.There seem two ways to do it for React functional components:
 
-##### What is state in React?
+Using **memo** from react:
+```
+import React, { memo } from 'react';
+const Component = (props) {
+  return (
+    // Component code
+  )
+}
+export default memo(Component);
+```
+Using **pure** from recompose:
+```
+import React from 'react';
+import { pure } from 'recompose';
+const Component = (props) {
+  return (
+    // Component code
+  )
+}
+export default pure(Component);
+```
 
-##### What are props in React?
+#### What is state in React?
 
-##### What is the difference between state and props?
+#### What are props in React?
 
-##### Why should we not update the state directly?
+#### What is the difference between state and props?
 
-##### What is the purpose of callback function as an argument of setState()?
+#### Why should we not update the state directly?
 
-##### What is the difference between HTML and React event handling?
+#### What is the purpose of callback function as an argument of setState()?
 
-##### How to bind methods or event handlers in JSX callbacks?
+#### What is the difference between HTML and React event handling?
 
-##### How to pass a parameter to an event handler or callback?
+#### How to bind methods or event handlers in JSX callbacks?
 
-##### What are synthetic events in React?
+#### How to pass a parameter to an event handler or callback?
 
-##### What are inline conditional expressions?
+#### What are synthetic events in React?
 
-##### What is "key" prop and what is the benefit of using it in arrays of elements?
+#### What are inline conditional expressions?
 
-##### What is the use of refs?
+#### What is "key" prop and what is the benefit of using it in arrays of elements?
 
-##### How to create refs?
+#### What is the use of refs?
 
-##### What are forward refs?
+#### How to create refs?
 
-##### Which is preferred option with in callback refs and findDOMNode()?
+#### What are forward refs?
 
-##### Why are String Refs legacy?
+#### Which is preferred option with in callback refs and findDOMNode()?
 
-##### What is Virtual DOM?
+#### Why are String Refs legacy?
 
-##### How Virtual DOM works?
+#### What is Virtual DOM?
 
-##### What is the difference between Shadow DOM and Virtual DOM?
+#### How Virtual DOM works?
 
-##### What is React Fiber?
+#### What is the difference between Shadow DOM and Virtual DOM?
 
-##### What is the main goal of React Fiber?
+#### What is React Fiber?
 
-##### What are controlled components?
+#### What is the main goal of React Fiber?
 
-##### What are uncontrolled components?
+#### What are controlled components?
 
-##### What is the difference between createElement and cloneElement?
+#### What are uncontrolled components?
 
-##### What is Lifting State Up in React?
+#### What is the difference between createElement and cloneElement?
 
-##### What are the different phases of component lifecycle?
+#### What is Lifting State Up in React?
 
-##### What are the lifecycle methods of React?
+#### What are the different phases of component lifecycle?
 
-##### What are Higher-Order components?
+#### What are the lifecycle methods of React?
 
-##### How to create props proxy for HOC component?
+#### What are Higher-Order components?
 
-##### What is context?
+#### How to create props proxy for HOC component?
 
-##### What is children prop?
+#### What is context?
 
-##### How to write comments in React?
+#### What is children prop?
 
-##### What is the purpose of using super constructor with props argument?
+#### How to write comments in React?
 
-##### What is reconciliation?
+#### What is the purpose of using super constructor with props argument?
 
-##### How to set state with a dynamic key name?
+#### What is reconciliation?
 
-##### What would be the common mistake of function being called every time the component renders?
+#### How to set state with a dynamic key name?
 
-##### Is lazy function supports named exports?
+#### What would be the common mistake of function being called every time the component renders?
 
-##### Why React uses className over class attribute?
+#### Is lazy function supports named exports?
 
-##### What are fragments?
+#### Why React uses className over class attribute?
+
+#### What are fragments?
 
 # Refrences
 ** https://reactjs.org/tutorial/tutorial.html
