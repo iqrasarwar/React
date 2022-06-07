@@ -1,12 +1,31 @@
 # React
 ##### What is React?
-React is a declarative, efficient, and flexible, free and open-source front-end JavaScript library for building user interfaces based on UI components. It lets you compose complex UIs from small and isolated pieces of code called “components”. It is maintained by Meta and a community of individual developers and companies.
-<sub>Imperative code instructs JavaScript on how it should perform each step. With declarative code, we tell JavaScript what we want to be done, and let JavaScript take care of performing the steps.</sub>
+React is a declarative, efficient, and flexible, free and open-source front-end JavaScript library for building user interfaces based on UI components. It lets you compose complex UIs from small and isolated pieces of code called “components”. It is maintained by Meta and a community of individual developers and companies.<br />
+> Imperative code instructs JavaScript on how it should perform each step. With declarative code, we tell JavaScript what we want to be done, and let JavaScript take care of performing the steps.
 
 ##### What are the major features of React?
+- JavaScript XML or JSX (JavaScript Syntax Extension)
+- Virtual DOM
+- One-way data binding
+- React Native
+- Declarative UI
+- Component Based Architecture
+- Conditional statements
 
 ##### What is the difference between Element and Component?
+**React Element**: It is the basic building block in a react application, it is an object representation of a virtual DOM node. React Element contains both type and property. It may contain other Elements in its props. React Element does not have any methods, making it light and faster to render than components.
+You can create elements using following ways.
+- JSX  `const element =<h1></h1>;`
+- React.createElement( ) It will take up three parameters:- type of the element, properties, and children for creating an element.
+`const element = React.createElement(
+                  'h1',
+                  {id:'header'},
+                  'Hello world' );`
 
+**React Component**: It is independent and reusable. It returns the virtual DOM of the element. One may or may not pass any parameter while creating a component. A component can be further described into functional components and class components.
+`function Hello(user){
+   return <div>Hello {user.name} </div>}
+   const element = <Hello name="John"/>`
 ##### What is JSX?
 
 ##### How to create components in React?
@@ -92,4 +111,9 @@ React is a declarative, efficient, and flexible, free and open-source front-end 
 ##### Why React uses className over class attribute?
 
 ##### What are fragments?
+
+# Refrences
+** https://reactjs.org/tutorial/tutorial.html
+** https://stackoverflow.com/
+** https://www.geeksforgeeks.org/
 
