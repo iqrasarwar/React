@@ -23,10 +23,42 @@ You can create elements using following ways.
                   'Hello world' );`
 
 **React Component**: It is independent and reusable. It returns the virtual DOM of the element. One may or may not pass any parameter while creating a component. A component can be further described into functional components and class components.
-`function Hello(user){
-   return <div>Hello {user.name} </div>}
-   const element = <Hello name="John"/>`
+```
+function Hello(user){
+   return <div>Hello {user.name} </div>
+}
+const element = <Hello name="John"/>
+```
 ##### What is JSX?
+JSX is a JavaScript Extension Syntax used in React to easily write HTML and JavaScript together. JSX produces React “elements”. React doesn’t require using JSX, but it is helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.
+- You can put any valid JavaScript expression inside the curly braces in JSX.
+```
+const name = 'John';
+const element = <h1>Hello, {name}</h1>;
+const ele = <h1>{2+2}</h1>;
+```
+- You can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions.
+- You may use quotes to specify string literals as attributes:
+```
+const element = <a href="https://www.reactjs.org"> link </a>;
+```
+- You may also use curly braces to embed a JavaScript expression in an attribute:
+```
+const element = <img src={user.avatarUrl}></img>;
+```
+- If a tag is empty, you may close it immediately with />, like XML:
+```
+const element = <img src={user.name} />;
+```
+- JSX tags may contain children:
+```
+const element = (
+  <div>
+    <h1>Hello!</h1>
+  </div>
+);
+```
+- You can never inject anything that’s not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent XSS (cross-site-scripting) attacks.
 
 ##### How to create components in React?
 
