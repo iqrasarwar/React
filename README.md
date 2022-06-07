@@ -1,9 +1,9 @@
 # React
-##### What is React?
+#### What is React?
 React is a declarative, efficient, and flexible, free and open-source front-end JavaScript library for building user interfaces based on UI components. It lets you compose complex UIs from small and isolated pieces of code called “components”. It is maintained by Meta and a community of individual developers and companies.<br />
 > Imperative code instructs JavaScript on how it should perform each step. With declarative code, we tell JavaScript what we want to be done, and let JavaScript take care of performing the steps.
 
-##### What are the major features of React?
+#### What are the major features of React?
 - JavaScript XML or JSX (JavaScript Syntax Extension)
 - Virtual DOM
 - One-way data binding
@@ -12,7 +12,7 @@ React is a declarative, efficient, and flexible, free and open-source front-end 
 - Component Based Architecture
 - Conditional statements
 
-##### What is the difference between Element and Component?
+#### What is the difference between Element and Component?
 **React Element**: It is the basic building block in a react application, it is an object representation of a virtual DOM node. React Element contains both type and property. It may contain other Elements in its props. React Element does not have any methods, making it light and faster to render than components.
 You can create elements using following ways.
 - JSX  `const element =<h1></h1>;`
@@ -29,7 +29,7 @@ function Hello(user){
 }
 const element = <Hello name="John"/>
 ```
-##### What is JSX?
+#### What is JSX?
 JSX is a JavaScript Extension Syntax used in React to easily write HTML and JavaScript together. JSX produces React “elements”. React doesn’t require using JSX, but it is helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.
 - You can put any valid JavaScript expression inside the curly braces in JSX.
 ```
@@ -60,7 +60,7 @@ const element = (
 ```
 - You can never inject anything that’s not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent XSS (cross-site-scripting) attacks.
 
-##### How to create components in React?
+#### How to create components in React?
 There are two ways to define components in ReactJS.
 - **React functional components** can be any JavaScript function that returns the HTML. These functional components can also accept “props”, meaning properties or data. As these are JavaScript functions or extensions of JavaScript functions, they can also be created from the ES6 convention of the arrow function.There should only be one return per component.
 ```
@@ -87,9 +87,12 @@ class App extends Component {
   }
 }
 ```
-##### When to use a Class Component over a Function Component?
+#### When to use a Class Component over a Function Component?
+React Functional components were supposed to be stateless components having no support for life cycle methods.
+But with the introduction of React hooks functional components can provide state managment via useState, useReducer hooks. They support lifecycle methods via the useEffect, useLayoutEffect hooks, and memoization via the memo HOC. Functional components are encouraged to used by meta & React. For furture info refer to :
+[Class vs Functional Components](https://stackoverflow.com/questions/36097965/when-to-use-es6-class-based-react-components-vs-functional-es6-react-components)
 
-##### What are Pure Components?
+#### What are Pure Components?
 
 ##### What is state in React?
 
