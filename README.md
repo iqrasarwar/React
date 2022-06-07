@@ -61,7 +61,32 @@ const element = (
 - You can never inject anything that’s not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent XSS (cross-site-scripting) attacks.
 
 ##### How to create components in React?
+There are two ways to define components in ReactJS.
+- **React functional components** can be any JavaScript function that returns the HTML. These functional components can also accept “props”, meaning properties or data. As these are JavaScript functions or extensions of JavaScript functions, they can also be created from the ES6 convention of the arrow function.There should only be one return per component.
+```
+const Hello = (props) => {
+    const person = props.name;
+  return (
+    <div>
+      <h1>Hello {person}!!</h1>
+    </div>
+  )
+}
+```
+- The **class-based components** also have almost the same features as React function components. but before we define our class-based component, we need to import the “React. Component” or extract the Component like “{Component}” from React.
+```
+import React, { Component } from 'react'
 
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello {this.props.name}</h1>
+      </div>
+    )
+  }
+}
+```
 ##### When to use a Class Component over a Function Component?
 
 ##### What are Pure Components?
