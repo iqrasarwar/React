@@ -330,19 +330,23 @@ const ref = React.createRef();
 - React passes the ref to the (props, ref) => ... function inside forwardRef as a second argument.
 - We forward this ref argument down to <button ref={ref}> by specifying it as a JSX attribute.
 - When the ref is attached, ref.current will point to the <button> DOM node.
-#### Which is preferred option with in callback refs and findDOMNode()?
+### Which is preferred option with in callback refs and findDOMNode()?
 - findDOMNode is an escape hatch used to access the underlying DOM node. In most cases, use of this escape hatch is discouraged because it pierces the component abstraction. It has been deprecated in StrictMode.
-#### Why are String Refs legacy?
+### Why are String Refs legacy?
  > string refs have some issues, are considered legacy, and are likely to be removed in one of the future releases.
  > String refs could never be implemented in user space (callbacks can; just have the component call the callback). The ramifications of this are far-reaching. For instance, if you wanted to create a HOC (Higher Order Component) that transparently wraps another component, you could forward all the props... but you couldn't forward a string ref. Or if you wanted a parent and a grandparent to both have a ref to a component, callback refs allow you to wrap the callback and pass it down, but string refs do not.
 > - String refs are not composable. A wrapping component can’t “snoop” on a ref to a child if it already has an existing string ref. On the other hand, callback refs don’t have a single owner, so you can always compose them.
-  - String refs don’t work with static analysis like Flow. Flow can’t guess the magic that framework does to make the string ref “appear” on this.refs, as well as its type (which could be different). Callback refs are friendlier to static analysis.
-  - The owner for a string ref is determined by the currently executing component. This means that with a common “render callback” pattern (e.g. <DataTable renderRow={this.renderRow} />), the wrong component will own the ref (it will end up on DataTable instead of your component defining renderRow).
-  - String refs force React to keep track of currently executing component. This is problematic because it makes react module stateful, and thus causes weird errors when react module is duplicated in the bundle.
+> - String refs don’t work with static analysis like Flow. Flow can’t guess the magic that framework does to make the string ref “appear” on this.refs, as well as its type (which could be different). Callback refs are friendlier to static analysis.
+> - The owner for a string ref is determined by the currently executing component. This means that with a common “render callback” pattern (e.g. <DataTable renderRow={this.renderRow} />), the wrong component will own the ref (it will end up on DataTable instead of your component defining renderRow).
+> - String refs force React to keep track of currently executing component. This is problematic because it makes react module stateful, and thus causes weird errors when react module is duplicated in the bundle.
 #### What is Virtual DOM?
-
+A virtual DOM is a lightweight JavaScript representation of the Document Object Model used in declarative web frameworks such as React, Vue.js, and Elm. Updating the virtual DOM is comparatively faster than updating the actual DOM.
 #### How Virtual DOM works?
+when there is a update in the virtual DOM, react compares the virtual DOM with a snapshot of the virtual DOM taken right before the update of the virtual DOM.
 
+With the help of this comparison React figures out which components in the UI needs to be updated. This process is called diffing. The algorithm that is used for the diffing process is called as the diffing algorithm.
+
+Once React knows which components has been updated, then it replaces the original DOM nodes with the updated DOM node.
 #### What is the difference between Shadow DOM and Virtual DOM?
 
 #### What is React Fiber?
