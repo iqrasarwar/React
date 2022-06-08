@@ -1,9 +1,13 @@
 # React
+
 ### What is React?
+
 React is a declarative, efficient, and flexible, free and open-source front-end JavaScript library for building user interfaces based on UI components. It lets you compose complex UIs from small and isolated pieces of code called “components”. It is maintained by Meta and a community of individual developers and companies.<br />
+
 > Imperative code instructs JavaScript on how it should perform each step. With declarative code, we tell JavaScript what we want to be done, and let JavaScript take care of performing the steps.
 
 ### What are the major features of React?
+
 - JavaScript XML or JSX (JavaScript Syntax Extension)
 - Virtual DOM
 - One-way data binding
@@ -13,44 +17,56 @@ React is a declarative, efficient, and flexible, free and open-source front-end 
 - Conditional statements
 
 ### What is the difference between Element and Component?
+
 **React Element**: It is the basic building block in a react application, it is an object representation of a virtual DOM node. React Element contains both type and property. It may contain other Elements in its props. React Element does not have any methods, making it light and faster to render than components.
 You can create elements using following ways.
-- JSX  `const element =<h1></h1>;`
+
+- JSX `const element =<h1></h1>;`
 - React.createElement( ) It will take up three parameters:- type of the element, properties, and children for creating an element.
-`const element = React.createElement(
-                  'h1',
-                  {id:'header'},
-                  'Hello world' );`
+  `const element = React.createElement( 'h1', {id:'header'}, 'Hello world' );`
 
 **React Component**: It is independent and reusable. It returns the virtual DOM of the element. One may or may not pass any parameter while creating a component. A component can be further described into functional components and class components.
+
 ```
 function Hello(user){
    return <div>Hello {user.name} </div>
 }
 const element = <Hello name="John"/>
 ```
+
 ### What is JSX?
+
 JSX is a JavaScript Extension Syntax used in React to easily write HTML and JavaScript together. JSX produces React “elements”. React doesn’t require using JSX, but it is helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.
+
 - You can put any valid JavaScript expression inside the curly braces in JSX.
+
 ```
 const name = 'John';
 const element = <h1>Hello, {name}</h1>;
 const ele = <h1>{2+2}</h1>;
 ```
+
 - You can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions.
 - You may use quotes to specify string literals as attributes:
+
 ```
 const element = <a href="https://www.reactjs.org"> link </a>;
 ```
+
 - You may also use curly braces to embed a JavaScript expression in an attribute:
+
 ```
 const element = <img src={user.avatarUrl}></img>;
 ```
+
 - If a tag is empty, you may close it immediately with />, like XML:
+
 ```
 const element = <img src={user.name} />;
 ```
+
 - JSX tags may contain children:
+
 ```
 const element = (
   <div>
@@ -58,11 +74,15 @@ const element = (
   </div>
 );
 ```
+
 - You can never inject anything that’s not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent XSS (cross-site-scripting) attacks.
 
 ### How to create components in React?
+
 There are two ways to define components in ReactJS.
+
 - **React functional components** can be any JavaScript function that returns the HTML. These functional components can also accept “props”, meaning properties or data. As these are JavaScript functions or extensions of JavaScript functions, they can also be created from the ES6 convention of the arrow function.There should only be one return per component.
+
 ```
 const Hello = (props) => {
     const person = props.name;
@@ -73,7 +93,9 @@ const Hello = (props) => {
   )
 }
 ```
+
 - The **class-based components** also have almost the same features as React function components. but before we define our class-based component, we need to import the “React. Component” or extract the Component like “{Component}” from React.
+
 ```
 import React, { Component } from 'react'
 
@@ -87,13 +109,17 @@ class App extends Component {
   }
 }
 ```
+
 ### When to use a Class Component over a Function Component?
+
 React Functional components were supposed to be stateless components having no support for life cycle methods.
 But with the introduction of React hooks functional components can provide state managment via useState, useReducer hooks. They support lifecycle methods via the useEffect, useLayoutEffect hooks, and memoization via the memo HOC. Functional components are encouraged to used by meta & React.<br />
 For furture info refer to : [Class vs Functional Components](https://stackoverflow.com/questions/36097965/when-to-use-es6-class-based-react-components-vs-functional-es6-react-components)
 
 ### What are Pure Components?
+
 A React component is considered pure if it renders the same output for the same state and props. For this type of class component, React provides the PureComponent base class. Class components that extend the React. PureComponent class are treated as pure components.
+
 ```
 class Pure extends React.PureComponent{
    render(){
@@ -101,10 +127,12 @@ class Pure extends React.PureComponent{
    }
 }
 ```
+
 The difference between them is that React.Component doesn’t implement shouldComponentUpdate(), but React.PureComponent implements it with a shallow prop and state comparison. If your React component’s render() function renders the same result given the same props and state, you can use React.PureComponent for a performance boost in some cases.
 A function is said to be pure if the return value is determined by its input values only and the return value is always the same for the same input values.There seem two ways to do it for React functional components:
 
 Using **memo** from react:
+
 ```
 import React, { memo } from 'react';
 const Component = (props) {
@@ -114,7 +142,9 @@ const Component = (props) {
 }
 export default memo(Component);
 ```
+
 Using **pure** from recompose:
+
 ```
 import React from 'react';
 import { pure } from 'recompose';
@@ -127,10 +157,14 @@ export default pure(Component);
 ```
 
 ### What is state in React?
+
 The State of a component is an object that holds some information that may change over the lifetime of the component.The difference is while a “normal” variable “disappears” when their function exits, the state variables are preserved by React.
+
 ### What are props in React?
+
 “Props” is a special keyword in React, which stands for properties and is being used for passing data from one component to another. The important part here is that data with props are being passed in a uni-directional flow. (one way from parent to child)
 Furthermore, props data is read-only, which means that data coming from the parent should not be changed by child components.
+
 ```
 function PropComponent({ name }) {
   return (<p>Your name {name}!</p>);
@@ -140,26 +174,36 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+
 ### What is the difference between state and props?
+
 The key difference between props and state is that state is internal and controlled by the component itself, it can be changed (Mutable).states are initialize on component mount.They are used for rendering dynamic changes within component.
 while props are external and controlled by whatever renders the component.Props can't be changed.(Immutable).
 
 ### Why should we not update the state directly?
+
 - Don't mutate this.state directly, as calling setState() afterwards may replace the mutation you made. Treat this.state as if it were immutable. setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value.
-setState() will always trigger a re-render unless conditional rendering logic is implemented in shouldComponentUpdate(). If mutable objects are being used and the logic cannot be implemented in shouldComponentUpdate(), calling setState() only when the new state differs from the previous state will avoid unnecessary re-renders.
+  setState() will always trigger a re-render unless conditional rendering logic is implemented in shouldComponentUpdate(). If mutable objects are being used and the logic cannot be implemented in shouldComponentUpdate(), calling setState() only when the new state differs from the previous state will avoid unnecessary re-renders.
 - when we update the state of a component all it's children are going to be rendered as well. or our entire component tree rendered. But when i say our entire component tree is rendered that doesn’t mean that the entire DOM is updated. when a component is rendered we basically get a react element, so that is updating our virtual dom. React will then look at the virtual DOM, it also has a copy of the old virtual DOM, that is why we shouldn’t update the state directly, so we can have two different object references in memory, we have the old virtual DOM as well as the new virtual DOM.
-then react will figure out what is changed and based on that it will update the real DOM accordingly .
+  then react will figure out what is changed and based on that it will update the real DOM accordingly .
+
 ### What is the purpose of callback function as an argument of setState()?
+
 setState works in an asynchronous way. That means after calling setState the this.state variable is not immediately changed. so if you want to perform an action immediately after setting state on a state variable and then return a result, a callback will be useful.
-#### What is the difference between HTML and React event handling?
+
+### What is the difference between HTML and React event handling?
+
 **HTML**
 we specify event using “onclick”,”onsubmit”which is the normal convention. We bind or provide the listener in form of the string. The string we pass to the listener should have “( )” at the end in order to work. We can add event listener any time using external javascript.
 **React**
-We specify the event using  “onClick”,”onSubmit” likewise which is camel case convention.
+We specify the event using “onClick”,”onSubmit” likewise which is camel case convention.
 We bind or provide the listener in form of function name or method name as a variable.
-We are only suppose to pass the method  name and nothing else. React can determine that it has to run this method.We have to specify all the Events at the time of creating the component.
-#### How to bind methods or event handlers in JSX callbacks?
+We are only suppose to pass the method name and nothing else. React can determine that it has to run this method.We have to specify all the Events at the time of creating the component.
+
+### How to bind methods or event handlers in JSX callbacks?
+
 - Binding in Constructor<br />
+
 ```
 class Component extends React.Component {
   constructor(props) {
@@ -171,37 +215,90 @@ class Component extends React.Component {
   }
 }
 ```
+
 - Arrow functions in callbacks: Use Arrow Function binding whenever possible.
+
 ```
 <button onClick={(event) => this.handleClick(event)}>{'Click me'}</button>
 ```
+
 - Binding Event Handler in Render Method
-We can bind the handler when it is called in the render method using bind() method.
+  We can bind the handler when it is called in the render method using bind() method.
+
 ```
 <button onClick={this.clickHandler.bind(this)}>Click</button>
 ```
+
 Binding Event Handler using Arrow Function
 We are binding the event handler implicitly. This approach is the best if you want to pass parameters to your event.
+
 ```
 <button onClick={() => this.clickHandler()}>Click</button>
 ```
+
 - Binding Event Handler using Arrow Function as a Class Property
+
 ```
 clickHandler = () => {...}
 ...
 <button onClick={this.clickHandler}>Click</button>
 ...
 ```
+
 ### How to pass a parameter to an event handler or callback?
 
-#### What are synthetic events in React?
+If you want to pass a parameter to the click event handler you need to make use of the arrow function or bind the function. If you pass the argument directly the onClick function would be called automatically even before pressing the button.
 
-#### What are inline conditional expressions?
+```
+...
+ call(message,event) {
+   alert(message);
+ }
+...
+<button onClick={(event)=> this.call("Your message",event)}>Click the button!</button>
+...
+```
 
-#### What is "key" prop and what is the benefit of using it in arrays of elements?
+- we can use Bind Method that is also used to pass the parameters in functions of class-based components.
 
+```
+...
+ call(message) { alert(message);}
+...
+<button onClick= {this.call.bind(this,"Your message")}>Click the button!</button>
+```
+
+### What are synthetic events in React?
+With synthetic events, the same API interface is implemented across multiple browsers.
+[synthetic events](https://blog.logrocket.com/getting-started-react-synthetic-event/)
+### What are inline conditional expressions?
+In the react, conditional rendering is the process to show components based on a particular condition.
+- **Inline if-else conditional (ternary) operator**
+```
+<b>{total > 0 ?<h2>{total} left</h2> : <h2>Empty</h2> }</b>
+```
+- **Inline If with Logical && Operator**
+```
+{(total > 0) && <h2>{total} left</h2> }
+```
+### What is "key" prop and what is the benefit of using it in arrays of elements?
+A key is a special string attribute you should include when creating arrays of elements. Key prop helps React identify which items have changed, are added, or are removed. Most often we use ID from our data as key:
+```
+const todoItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
+```
+When you don't have stable IDs for rendered items, you may use the item index as a key as a last resort:
+```
+const todoItems = todos.map((todo, index) => <li key={index}>{todo.text}</li>);
+```
+- Using indexes for keys is not recommended if the order of items may change. This can negatively impact performance and may cause issues with component state.
+- If you extract list item as separate component then apply keys on list component instead of li tag.
+- There will be a warning message in the console if the key prop is not present on list items.
 #### What is the use of refs?
-
+There are a few good use cases for refs:
+- Managing focus, text selection, or media playback.
+- Triggering imperative animations.
+- Integrating with third-party DOM libraries.
+- *Avoid using refs for anything that can be done declaratively.*
 #### How to create refs?
 
 #### What are forward refs?
@@ -257,7 +354,9 @@ clickHandler = () => {...}
 #### What are fragments?
 
 # Refrences
-** https://reactjs.org/tutorial/tutorial.html
-** https://stackoverflow.com/
-** https://www.geeksforgeeks.org/
+
+* https://reactjs.org/tutorial/tutorial.html
+* https://stackoverflow.com/
+* https://www.geeksforgeeks.org/
+* https://iq.js.org/
 
