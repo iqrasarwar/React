@@ -145,19 +145,54 @@ The key difference between props and state is that state is internal and control
 while props are external and controlled by whatever renders the component.Props can't be changed.(Immutable).
 
 ### Why should we not update the state directly?
-- NEVER mutate this.state directly, as calling setState() afterwards may replace the mutation you made. Treat this.state as if it were immutable.
-setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value.
+- Don't mutate this.state directly, as calling setState() afterwards may replace the mutation you made. Treat this.state as if it were immutable. setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value.
 setState() will always trigger a re-render unless conditional rendering logic is implemented in shouldComponentUpdate(). If mutable objects are being used and the logic cannot be implemented in shouldComponentUpdate(), calling setState() only when the new state differs from the previous state will avoid unnecessary re-renders.
-- when we update the state of a component all it's children are going to be rendered as well. or our entire component tree rendered.
-but when i say our entire component tree is rendered that doesn’t mean that the entire DOM is updated. when a component is rendered we basically get a react element, so that is updating our virtual dom. React will then look at the virtual DOM, it also has a copy of the old virtual DOM, that is why we shouldn’t update the state directly, so we can have two different object references in memory, we have the old virtual DOM as well as the new virtual DOM.
+- when we update the state of a component all it's children are going to be rendered as well. or our entire component tree rendered. But when i say our entire component tree is rendered that doesn’t mean that the entire DOM is updated. when a component is rendered we basically get a react element, so that is updating our virtual dom. React will then look at the virtual DOM, it also has a copy of the old virtual DOM, that is why we shouldn’t update the state directly, so we can have two different object references in memory, we have the old virtual DOM as well as the new virtual DOM.
 then react will figure out what is changed and based on that it will update the real DOM accordingly .
 ### What is the purpose of callback function as an argument of setState()?
 setState works in an asynchronous way. That means after calling setState the this.state variable is not immediately changed. so if you want to perform an action immediately after setting state on a state variable and then return a result, a callback will be useful.
 #### What is the difference between HTML and React event handling?
-
+**HTML**
+we specify event using “onclick”,”onsubmit”which is the normal convention. We bind or provide the listener in form of the string. The string we pass to the listener should have “( )” at the end in order to work. We can add event listener any time using external javascript.
+**React**
+We specify the event using  “onClick”,”onSubmit” likewise which is camel case convention.
+We bind or provide the listener in form of function name or method name as a variable.
+We are only suppose to pass the method  name and nothing else. React can determine that it has to run this method.We have to specify all the Events at the time of creating the component.
 #### How to bind methods or event handlers in JSX callbacks?
-
-#### How to pass a parameter to an event handler or callback?
+- Binding in Constructor<br />
+```
+class Component extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    // ...
+  }
+}
+```
+- Arrow functions in callbacks: Use Arrow Function binding whenever possible.
+```
+<button onClick={(event) => this.handleClick(event)}>{'Click me'}</button>
+```
+- Binding Event Handler in Render Method
+We can bind the handler when it is called in the render method using bind() method.
+```
+<button onClick={this.clickHandler.bind(this)}>Click</button>
+```
+Binding Event Handler using Arrow Function
+We are binding the event handler implicitly. This approach is the best if you want to pass parameters to your event.
+```
+<button onClick={() => this.clickHandler()}>Click</button>
+```
+- Binding Event Handler using Arrow Function as a Class Property
+```
+clickHandler = () => {...}
+...
+<button onClick={this.clickHandler}>Click</button>
+...
+```
+### How to pass a parameter to an event handler or callback?
 
 #### What are synthetic events in React?
 
