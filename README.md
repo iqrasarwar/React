@@ -293,20 +293,52 @@ const todoItems = todos.map((todo, index) => <li key={index}>{todo.text}</li>);
 - Using indexes for keys is not recommended if the order of items may change. This can negatively impact performance and may cause issues with component state.
 - If you extract list item as separate component then apply keys on list component instead of li tag.
 - There will be a warning message in the console if the key prop is not present on list items.
-#### What is the use of refs?
+### What is the use of refs?
 There are a few good use cases for refs:
 - Managing focus, text selection, or media playback.
 - Triggering imperative animations.
 - Integrating with third-party DOM libraries.
 - *Avoid using refs for anything that can be done declaratively.*
-#### How to create refs?
-
+### How to create refs?
+Refs are created using React.createRef() and attached to React elements via the ref attribute. Refs are commonly assigned to an instance property when a component is constructed so they can be referenced throughout the component.
+```
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+  render() {
+    return <div ref={this.myRef} />;
+  }
+}
+```
 #### What are forward refs?
+By default, you may not use the ref attribute on function components because they don’t have instances. If you want to allow people to take a ref to your function component, you can use forwardRef. Ref forwarding is an opt-in feature that lets some components take a ref they receive, and pass it further down (in other words, “forward” it) to a child.
+```
+const FancyButton = React.forwardRef((props, ref) => (
+  <button ref={ref} className="FancyButton">
+    {props.children}
+  </button>
+));
 
+// You can now get a ref directly to the DOM button:
+const ref = React.createRef();
+<FancyButton ref={ref}>Click me!</FancyButton>;
+```
+- We create a React ref by calling React.createRef and assign it to a ref variable.
+- We pass our ref down to <FancyButton ref={ref}> by specifying it as a JSX attribute.
+- React passes the ref to the (props, ref) => ... function inside forwardRef as a second argument.
+- We forward this ref argument down to <button ref={ref}> by specifying it as a JSX attribute.
+- When the ref is attached, ref.current will point to the <button> DOM node.
 #### Which is preferred option with in callback refs and findDOMNode()?
-
+- findDOMNode is an escape hatch used to access the underlying DOM node. In most cases, use of this escape hatch is discouraged because it pierces the component abstraction. It has been deprecated in StrictMode.
 #### Why are String Refs legacy?
-
+ > string refs have some issues, are considered legacy, and are likely to be removed in one of the future releases.
+ > String refs could never be implemented in user space (callbacks can; just have the component call the callback). The ramifications of this are far-reaching. For instance, if you wanted to create a HOC (Higher Order Component) that transparently wraps another component, you could forward all the props... but you couldn't forward a string ref. Or if you wanted a parent and a grandparent to both have a ref to a component, callback refs allow you to wrap the callback and pass it down, but string refs do not.
+> - String refs are not composable. A wrapping component can’t “snoop” on a ref to a child if it already has an existing string ref. On the other hand, callback refs don’t have a single owner, so you can always compose them.
+  - String refs don’t work with static analysis like Flow. Flow can’t guess the magic that framework does to make the string ref “appear” on this.refs, as well as its type (which could be different). Callback refs are friendlier to static analysis.
+  - The owner for a string ref is determined by the currently executing component. This means that with a common “render callback” pattern (e.g. <DataTable renderRow={this.renderRow} />), the wrong component will own the ref (it will end up on DataTable instead of your component defining renderRow).
+  - String refs force React to keep track of currently executing component. This is problematic because it makes react module stateful, and thus causes weird errors when react module is duplicated in the bundle.
 #### What is Virtual DOM?
 
 #### How Virtual DOM works?
