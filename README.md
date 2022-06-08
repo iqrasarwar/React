@@ -312,7 +312,7 @@ class MyComponent extends React.Component {
   }
 }
 ```
-#### What are forward refs?
+### What are forward refs?
 By default, you may not use the ref attribute on function components because they don’t have instances. If you want to allow people to take a ref to your function component, you can use forwardRef. Ref forwarding is an opt-in feature that lets some components take a ref they receive, and pass it further down (in other words, “forward” it) to a child.
 ```
 const FancyButton = React.forwardRef((props, ref) => (
@@ -347,47 +347,47 @@ when there is a update in the virtual DOM, react compares the virtual DOM with a
 With the help of this comparison React figures out which components in the UI needs to be updated. This process is called diffing. The algorithm that is used for the diffing process is called as the diffing algorithm.
 
 Once React knows which components has been updated, then it replaces the original DOM nodes with the updated DOM node.
-#### What is the difference between Shadow DOM and Virtual DOM?
+### What is the difference between Shadow DOM and Virtual DOM?
+The only thing which is common for both is that they help with performance issues. Both create a separate instance of the Document Object Model; besides this, both concepts are different. Virtual DOM is creating a copy of the whole DOM object, and Shadow DOM creates small pieces of the DOM object which has their own, isolated scope for the element they represent.
+### What is React Fiber?
 
-#### What is React Fiber?
+### What is the main goal of React Fiber?
 
-#### What is the main goal of React Fiber?
+### What are controlled components?
 
-#### What are controlled components?
+### What are uncontrolled components?
 
-#### What are uncontrolled components?
+### What is the difference between createElement and cloneElement?
 
-#### What is the difference between createElement and cloneElement?
+### What is Lifting State Up in React?
 
-#### What is Lifting State Up in React?
+### What are the different phases of component lifecycle?
 
-#### What are the different phases of component lifecycle?
+### What are the lifecycle methods of React?
 
-#### What are the lifecycle methods of React?
+### What are Higher-Order components?
 
-#### What are Higher-Order components?
+### How to create props proxy for HOC component?
 
-#### How to create props proxy for HOC component?
+### What is context?
 
-#### What is context?
+### What is children prop?
 
-#### What is children prop?
+### How to write comments in React?
 
-#### How to write comments in React?
+### What is the purpose of using super constructor with props argument?
 
-#### What is the purpose of using super constructor with props argument?
+### What is reconciliation?
 
-#### What is reconciliation?
+### How to set state with a dynamic key name?
 
-#### How to set state with a dynamic key name?
+### What would be the common mistake of function being called every time the component renders?
 
-#### What would be the common mistake of function being called every time the component renders?
+### Is lazy function supports named exports?
 
-#### Is lazy function supports named exports?
+### Why React uses className over class attribute?
 
-#### Why React uses className over class attribute?
-
-#### What are fragments?
+### What are fragments?
 
 # Refrences
 
@@ -395,4 +395,5 @@ Once React knows which components has been updated, then it replaces the origina
 * https://stackoverflow.com/
 * https://www.geeksforgeeks.org/
 * https://iq.js.org/
+* https://www.blog.duomly.com/
 
