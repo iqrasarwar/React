@@ -452,7 +452,18 @@ lazy() does not support using named exports for React components. If you wish to
 ### Why React uses className over class attribute?
 The only reason behind the fact that it uses className over class is that the class is a reserved keyword in JavaScript and since we use JSX in React which itself is the extension of JavaScript, so we have to use className instead of class attribute.
 ### What are fragments?
-
+A common pattern in React is for a component to return multiple elements. Fragments let you group a list of children without adding extra nodes to the DOM.
+```
+render() {
+  return (
+    <React.Fragment>
+      <ChildA />
+      <ChildB />
+      <ChildC />
+    </React.Fragment>
+  );
+}
+```
 # Refrences
 
 * https://reactjs.org/tutorial/tutorial.html
