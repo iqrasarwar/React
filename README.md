@@ -399,9 +399,25 @@ In ReactJS, the development of each component involves the use of different life
 - componentWillUpdate()
 - componentDidUpdate()
 ### What are Higher-Order components?
-
+A higher-order component (HOC) is an advanced technique in React for reusing component logic.
+Concretely, a higher-order component is a function that takes a component and returns a new component.
 ### How to create props proxy for HOC component?
-
+You can add/edit props passed to the component using props proxy pattern like this:
+```
+function HOC(WrappedComponent) {
+  return class Test extends Component {
+    render() {
+      const newProps = {
+        title: 'New Header',
+        footer: false,
+        showFeatureX: false,
+        showFeatureY: true,
+      };
+      return <WrappedComponent {...this.props} {...newProps} />;
+    }
+  };
+}
+```
 ### What is context?
 
 ### What is children prop?
