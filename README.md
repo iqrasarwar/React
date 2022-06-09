@@ -379,7 +379,7 @@ function Example () {
 }
 ```
 ### What is the difference between createElement and cloneElement?
-
+![Capture](https://user-images.githubusercontent.com/71145709/172849445-54053247-f568-4dcd-bd71-d17193bf120c.PNG)<br />
 ### What is Lifting State Up in React?
 In React, sharing state is accomplished by moving it up to the closest common ancestor of the components that need it. This is called “lifting state up”. We will remove the local state from the child and move it into the closest common ancestor instead.
 There should be a single “source of truth” for any data that changes in a React application. Usually, the state is first added to the component that needs it for rendering. Then, if other components also need it, you can lift it up to their closest common ancestor. Instead of trying to sync the state between different components, you should rely on the top-down data flow.
