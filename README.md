@@ -339,9 +339,9 @@ const ref = React.createRef();
 > - String refs don’t work with static analysis like Flow. Flow can’t guess the magic that framework does to make the string ref “appear” on this.refs, as well as its type (which could be different). Callback refs are friendlier to static analysis.
 > - The owner for a string ref is determined by the currently executing component. This means that with a common “render callback” pattern (e.g. <DataTable renderRow={this.renderRow} />), the wrong component will own the ref (it will end up on DataTable instead of your component defining renderRow).
 > - String refs force React to keep track of currently executing component. This is problematic because it makes react module stateful, and thus causes weird errors when react module is duplicated in the bundle.
-#### What is Virtual DOM?
+### What is Virtual DOM?
 A virtual DOM is a lightweight JavaScript representation of the Document Object Model used in declarative web frameworks such as React, Vue.js, and Elm. Updating the virtual DOM is comparatively faster than updating the actual DOM.
-#### How Virtual DOM works?
+### How Virtual DOM works?
 when there is a update in the virtual DOM, react compares the virtual DOM with a snapshot of the virtual DOM taken right before the update of the virtual DOM.
 
 With the help of this comparison React figures out which components in the UI needs to be updated. This process is called diffing. The algorithm that is used for the diffing process is called as the diffing algorithm.
@@ -350,21 +350,54 @@ Once React knows which components has been updated, then it replaces the origina
 ### What is the difference between Shadow DOM and Virtual DOM?
 The only thing which is common for both is that they help with performance issues. Both create a separate instance of the Document Object Model; besides this, both concepts are different. Virtual DOM is creating a copy of the whole DOM object, and Shadow DOM creates small pieces of the DOM object which has their own, isolated scope for the element they represent.
 ### What is React Fiber?
-
+React Fiber is a concept of ReactJS that is used to render a system faster and smoother. After certain changes who is the next element to render the system called reconciler. This algorithm helps to compare two DOM trees and diff them. React fiber helps to do it better.
+React Fiber is a completely backward-compatible rewrite of the old reconciler. This new reconciliation algorithm from React is called Fiber Reconciler. The name comes from fiber, which it uses to represent the node of the DOM tree.
 ### What is the main goal of React Fiber?
+The main goals of the Fiber reconciler are incremental rendering, better or smoother rendering of UI animations and gestures, and responsiveness of the user interactions. The reconciler also allows you to divide the work into multiple chunks and divide the rendering work over multiple frames. It also adds the ability to define the priority for each unit of work and pause, reuse, and abort the work.
 
+Some other features of React include returning multiple elements from a render function, supporting better error handling(we can use the componentDidCatch method to get clearer error messages), and portals.
+
+While computing new rendering updates, React refers back to the main thread multiple times. As a result, high-priority work can be jumped over low-priority work. React has priorities defined internally for each update.
 ### What are controlled components?
-
+Uncontrolled component and Controlled component are terms used to describe React components that render HTML form elements.
+> A controlled component is a component that renders form elements and controls them by keeping the form data in the component's state. In a controlled component, the form element's data is handled by the React component (not DOM) and kept in the component's state. A controlled component basically overrides the default behavior of the HTML form elements.
+```
+const { useState } from 'react';
+function Controlled () {
+  const [email, setEmail] = useState();
+  const handleInput = (e) => setEmail(e.target.value);
+  return <input type="text" value={email} onChange={handleInput} />;
+}
+```
 ### What are uncontrolled components?
-
+> An uncontrolled component is a component that renders form elements, where the form element's data is handled by the DOM (default DOM behavior). To access the input's DOM node and extract its value you can use a ref.
+```
+const { useRef } from 'react';
+function Example () {
+  const inputRef = useRef(null);
+  return <input type="text" defaultValue="bar" ref={inputRef} />
+}
+```
 ### What is the difference between createElement and cloneElement?
 
 ### What is Lifting State Up in React?
-
+In React, sharing state is accomplished by moving it up to the closest common ancestor of the components that need it. This is called “lifting state up”. We will remove the local state from the child and move it into the closest common ancestor instead.
+There should be a single “source of truth” for any data that changes in a React application. Usually, the state is first added to the component that needs it for rendering. Then, if other components also need it, you can lift it up to their closest common ancestor. Instead of trying to sync the state between different components, you should rely on the top-down data flow.
 ### What are the different phases of component lifecycle?
-
+In ReactJS, the development of each component involves the use of different lifecycle methods. All the lifecycle methods used to create such components, together constitute the component’s lifecycle. They are defined as a series of functions invoked in various stages of a component. Each phase of the lifecycle components includes some specific lifecycle methods related to that particular phase. There are primarily 4 phases involved in the lifecycle of a reactive component, as follows.
+- Initializing
+- Mounting
+- Updating
+- Unmounting
 ### What are the lifecycle methods of React?
-
+- getDefaultProps()
+- getInitialState()
+- componentWillMount()
+- componentDidMount()
+- componentWillReceiveProps()
+- shouldComponentUpdate()
+- componentWillUpdate()
+- componentDidUpdate()
 ### What are Higher-Order components?
 
 ### How to create props proxy for HOC component?
