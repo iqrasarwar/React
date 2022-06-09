@@ -464,6 +464,42 @@ render() {
   );
 }
 ```
+### What are portals in React?
+Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+````ReactDOM.createPortal(child, container)````
+The first argument (child) is any renderable React child, such as an element, string, or fragment. The second argument (container) is a DOM element.
+### What are stateless components?
+Stateless components are those components which don't have any state at all, which means you can't use this. setState inside these components. It is like a normal function with no render method. It has no lifecycle, so it is not possible to use lifecycle methods such as componentDidMount and other hooks.
+### What are stateful components?
+In React, a stateful component is a component that holds some state. Stateless components, by contrast, have no state. Note that both types of components can use props.
+### How to apply validation on props in React?
+### What are the advantages of React?
+### What are the limitations of React?
+### What are error boundaries in React v16?
+### How error boundaries handled in React v15?
+### What are the recommended ways for static type checking?
+### What is the use of react-dom package?
+### What is the purpose of render method of react-dom?
+### What is ReactDOMServer?
+### How to use InnerHtml in React?
+### How to use styles in React?
+### How events are different in React?
+### What will happen if you use setState in constructor?
+### What is the impact of indexes as keys?
+### Is it good to use setState() in componentWillMount() method?
+### What will happen if you use props in initial state?
+### How do you conditionally render components?
+### Why we need to be careful when spreading props on DOM elements??
+### How you use decorators in React?
+### How do you memoize a component?
+### How you implement Server-Side Rendering or SSR?
+### How to enable production mode in React?
+### What is the lifecycle methods order in mounting?
+### What are the lifecycle methods going to be deprecated in React v16?
+### What is the purpose of getDerivedStateFromProps() lifecycle method?
+### What is the purpose of getSnapshotBeforeUpdate() lifecycle method?
+### Do Hooks replace render props and higher order components?
+### What is the recommended way for naming components?
 # Refrences
 
 * https://reactjs.org/tutorial/tutorial.html
