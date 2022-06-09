@@ -432,13 +432,25 @@ super() is used to call the parent constructor. super(props) would pass props to
 React provides a declarative API so that you don’t have to worry about exactly what changes on every update. This makes writing applications a lot easier, but it might not be obvious how this is implemented within React.
 Reconciliation is the process through which React updates the DOM. When a component’s state changes, React has to calculate if it is necessary to update the DOM. It does this by creating a virtual DOM and comparing it with the current DOM.
 ### How to set state with a dynamic key name?
-
+inputChangeHandler: function ({ target: { id, value }) {
+    this.setState({ [id]: value });
+}
 ### What would be the common mistake of function being called every time the component renders?
-
+You need to make sure that function is not being called while passing the function as a parameter.
+```
+render() {
+// Wrong: handleClick is called instead of passed as a reference!
+return <button onClick={this.handleClick()}>{'Click Me'}</button>
+}
+render() {
+// Correct: handleClick is passed as a reference!
+return <button onClick={this.handleClick}>{'Click Me'}</button>
+}
+```
 ### Is lazy function supports named exports?
-
+lazy() does not support using named exports for React components. If you wish to use named exports containing React components, you need to reexport them as default exports in separate intermediate modules.
 ### Why React uses className over class attribute?
-
+The only reason behind the fact that it uses className over class is that the class is a reserved keyword in JavaScript and since we use JSX in React which itself is the extension of JavaScript, so we have to use className instead of class attribute.
 ### What are fragments?
 
 # Refrences
