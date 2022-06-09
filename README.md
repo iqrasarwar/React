@@ -427,9 +427,10 @@ props.children represents the content between the opening and the closing tags w
 ### How to write comments in React?
 We can write comments in React using the double forward-slash // or the asterisk format /* */, similar to regular JavaScript.
 ### What is the purpose of using super constructor with props argument?
-
+super() is used to call the parent constructor. super(props) would pass props to the parent constructor.
 ### What is reconciliation?
-
+React provides a declarative API so that you don’t have to worry about exactly what changes on every update. This makes writing applications a lot easier, but it might not be obvious how this is implemented within React.
+Reconciliation is the process through which React updates the DOM. When a component’s state changes, React has to calculate if it is necessary to update the DOM. It does this by creating a virtual DOM and comparing it with the current DOM.
 ### How to set state with a dynamic key name?
 
 ### What would be the common mistake of function being called every time the component renders?
