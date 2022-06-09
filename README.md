@@ -422,9 +422,10 @@ function HOC(WrappedComponent) {
 Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 Context is designed to share data that can be considered “global” for a tree of React components, such as the current authenticated user, theme, or preferred language.
 ### What is children prop?
-
+props.children represents the content between the opening and the closing tags when invoking/rendering a component.
+ props. children is a special prop, automatically passed to every component, that can be used to render the content included between the opening and closing tags when invoking a component.
 ### How to write comments in React?
-
+We can write comments in React using the double forward-slash // or the asterisk format /* */, similar to regular JavaScript.
 ### What is the purpose of using super constructor with props argument?
 
 ### What is reconciliation?
