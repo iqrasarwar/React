@@ -473,14 +473,43 @@ Stateless components are those components which don't have any state at all, whi
 ### What are stateful components?
 In React, a stateful component is a component that holds some state. Stateless components, by contrast, have no state. Note that both types of components can use props.
 ### How to apply validation on props in React?
+React JS has an inbuilt feature for validating props data type to make sure that values passed through props are valid. React components have a property called propTypes which is used to setup data type validation.
+````
+class Component extends React.Component {
+  render() {}
+}
+Component.propTypes = {/* definition goes here*/};
+````
 ### What are the advantages of React?
+- It is composable.
+- Reusable Components
+- It is declarative.
+- It is simple.
+- SEO friendly.
+- Fast, efficient, and easy to learn.
+- Scope for Testing the Codes
+- The Support of Handy Tools
+- Performance Enhancement
 ### What are the limitations of React?
+- Lack of Proper Documentation
+- Development Speed
+- JSX as a barrier
+- only UI covered
 ### What are error boundaries in React v16?
+In the past, JavaScript errors inside components used to corrupt React’s internal state and cause it to emit cryptic errors on next renders. These errors were always caused by an earlier error in the application code, but React did not provide a way to handle them gracefully in components, and could not recover from them.
+To solve this problem for React users, React 16 introduces a new concept of an “error boundary”. Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
 ### How error boundaries handled in React v15?
+React v15 provided very basic support for error boundaries using unstable_handleError method. It has been renamed to componentDidCatch in React v16.
 ### What are the recommended ways for static type checking?
+Static type checkers like Flow and TypeScript identify certain types of problems before you even run your code. They can also improve developer workflow by adding features like auto-completion.
+Normally we use PropTypes library (React.PropTypes moved to a prop-types package since React v15.5) for type checking in the React applications. For large code bases, it is recommended to use static type checkers such as Flow or TypeScript, that perform type checking at compile time and provide auto-completion features.
 ### What is the use of react-dom package?
+The react-dom package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside the React model if you need to.
 ### What is the purpose of render method of react-dom?
+This is one of the most important methods of ReactDOM. This function is used to render a single React Component or several Components wrapped together in a Component or a div element. This function uses the efficient methods of React for updating the DOM by being able to change only a subtree, efficient diff methods, etc.
+`ReactDOM.render(element, container, callback)`
 ### What is ReactDOMServer?
+The ReactDOMServer object enables you to render components to static markup. Typically, it’s used on a Node server.
 ### How to use InnerHtml in React?
 ### How to use styles in React?
 ### How events are different in React?
