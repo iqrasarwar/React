@@ -547,6 +547,13 @@ answer could be found in the Docs of React
 taken from here. "calling setState() synchronously in componentWillMount() method will not trigger an extra rendering".
 > However It is not recommended to use asynchronous actions inside componentWillMount().Well, when you do an async request in the constructor / componentWillMount you do it before render gets called, by the time the async operation has finished the render method most probably already finished and no point to set the "initial state" at this stage is it?.
 ### What will happen if you use props in initial state?
+> If the props on the component are changed without the component being refreshed, the new prop value will never be displayed because the constructor function will never update the current state of the component. The initialization of state from props only runs when the component is first created.
+let's see a few ways to fix it.
+**Parent Component Needs The Value**
+> In case if the parent component needs the value, for example to send it to the API, we can leave the state handling in the component and just pass the value and the update function as props.
+**Parent Component Doesn't Need The Value**
+> If the parent component doesn't need the value, why would we leave it there to unnecessarily re-render the entire parent component?try moving the state and update function to the child component
+> Destroy and re-create the child component when the prop changes.We can also use the prop as a key to create a new instance of the ChildComponent each time it changes to reset the state.
 ### How do you conditionally render components?
 ### Why we need to be careful when spreading props on DOM elements??
 ### How you use decorators in React?
