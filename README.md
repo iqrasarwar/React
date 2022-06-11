@@ -555,6 +555,11 @@ let's see a few ways to fix it.
 > If the parent component doesn't need the value, why would we leave it there to unnecessarily re-render the entire parent component?try moving the state and update function to the child component
 > Destroy and re-create the child component when the prop changes.We can also use the prop as a key to create a new instance of the ChildComponent each time it changes to reset the state.
 ### How do you conditionally render components?
+In React, you can create distinct components that encapsulate behavior you need. Then, you can render only some of them, depending on the state of your application.
+- use if -else
+- use Inline If with Logical && Operator
+- use Inline If-Else with Conditional Operator (ternary)
+You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn’t change.
 ### Why we need to be careful when spreading props on DOM elements??
 ### How you use decorators in React?
 ### How do you memoize a component?
