@@ -510,9 +510,32 @@ This is one of the most important methods of ReactDOM. This function is used to 
 `ReactDOM.render(element, container, callback)`
 ### What is ReactDOMServer?
 The ReactDOMServer object enables you to render components to static markup. Typically, it’s used on a Node server.
+These methods are only available in the environments with Node.js Streams:
+- renderToPipeableStream()
+- renderToNodeStream() (Deprecated)
+- renderToStaticNodeStream()
+- renderToReadableStream()
+- renderToString()
+- renderToStaticMarkup()
 ### How to use InnerHtml in React?
+The dangerouslySetInnerHTML attribute is React's replacement for using innerHTML in the browser DOM. Just like innerHTML, it is risky to use this attribute considering cross-site scripting (XSS) attacks. You just need to pass a __html object as key and HTML text as value.
+````
+function createMarkup() {
+  return { __html: 'First &middot; Second' };
+}
+function MyComponent() {
+  return <div dangerouslySetInnerHTML={createMarkup()} />;
+}
+````
 ### How to use styles in React?
+React Components can add styling in the following ways:
+
+- Add the Global Styles to “index.html” File
+- Adding Inline Style to React Component Elements
+- CSS Modules
+- Styled-components 💅
 ### How events are different in React?
+
 ### What will happen if you use setState in constructor?
 ### What is the impact of indexes as keys?
 ### Is it good to use setState() in componentWillMount() method?
