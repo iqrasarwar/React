@@ -533,12 +533,19 @@ React Components can add styling in the following ways:
 - Add the Global Styles to “index.html” File
 - Adding Inline Style to React Component Elements
 - CSS Modules
-- Styled-components 💅
+- Styled-components 💅 (a library)
 ### How events are different in React?
-
 ### What will happen if you use setState in constructor?
+> What setState essentially does is to run a bunch of logic you probably don't need in the constructor. When you go state = {foo : "bar"} you simply assign something to the javascript object state, like you would any other object. (That's all state is by the way, just a regular object local to every component).
+> When you use setState(), then apart from assigning to the object state react also rerenders the component and all its children. Which you don't need in the constructor, since the component hasn't been rendered anyway.
 ### What is the impact of indexes as keys?
+answer could be found in the Docs of React
+> We don’t recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. Check out Robin Pokorny’s article for an in-depth explanation on the negative impacts of using an index as a key. If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+> If we are not adding /removing items from list then it is fine to use index as keys else it will be good to use some id which uniquely identifies the item. Reason is if you add or remove some items from the list, indexes change for older items and react can get confused which items are changed.
 ### Is it good to use setState() in componentWillMount() method?
+> Using setState inside componentWillMount() is fine: "The componentWillMount() is a chance for us to handle configuration, update our state, and in general prepare for the first render. At this point, props and initial state are defined. We can safely query this.props and this.state, knowing with certainty they are the current values. This means we can start performing calculations or processes based on the prop values."
+taken from here. "calling setState() synchronously in componentWillMount() method will not trigger an extra rendering".
+> However It is not recommended to use asynchronous actions inside componentWillMount().Well, when you do an async request in the constructor / componentWillMount you do it before render gets called, by the time the async operation has finished the render method most probably already finished and no point to set the "initial state" at this stage is it?.
 ### What will happen if you use props in initial state?
 ### How do you conditionally render components?
 ### Why we need to be careful when spreading props on DOM elements??
