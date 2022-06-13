@@ -601,7 +601,10 @@ The new name for this method is UNSAFE_componentWillUpdate.
 ### What is the purpose of getDerivedStateFromProps() lifecycle method?
 ### What is the purpose of getSnapshotBeforeUpdate() lifecycle method?
 ### Do Hooks replace render props and higher order components?
-
+### What is the recommended way for naming components?
+- Component names should be self-explanatory and it should help us understand what the component will achieve.
+- Use PascalCase for naming components in React and the file extension should be .jsx.
+- Component names should be same as the filename.
 # Refrences
 
 * https://reactjs.org/tutorial/tutorial.html
