@@ -581,7 +581,26 @@ const CommentsText = props => {
     );
 };
 ```
-
+### How you use decorators in React?
+### How do you memoize a component?
+### How you implement Server-Side Rendering or SSR?
+### How to enable production mode in React?
+### What is the lifecycle methods order in mounting?
+* render => componentWillMount => componentDidMount => componentWillUpdate => componentDidUpdate => componentWillUnmount
+* for mounting: constructor call, then it renders, then calls componentDidMount.
+*
+### What are the lifecycle methods going to be deprecated in React v16?
+The methods that are deprecated are as follows:
+- componentWillMount
+All the legacy use cases are covered in the constructor. This is renamed as UNSAFE_componentWillMount.
+- componentWillReceiveProps
+The new static method getDerivedStateFromProps is safe rewrite for this method and covers all the use cases of componentWillReceiveProps. The new name for this method is UNSAFE_componentWillReceiveProps.
+- componentWillUpdate
+The new method getSnapshotBeforeUpdate is safe rewrite for this method and covers all the use cases of componentWillUpdate.
+The new name for this method is UNSAFE_componentWillUpdate.
+### What is the purpose of getDerivedStateFromProps() lifecycle method?
+### What is the purpose of getSnapshotBeforeUpdate() lifecycle method?
+### Do Hooks replace render props and higher order components?
 
 # Refrences
 
