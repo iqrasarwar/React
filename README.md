@@ -560,17 +560,29 @@ In React, you can create distinct components that encapsulate behavior you need.
 - use Inline If with Logical && Operator
 - use Inline If-Else with Conditional Operator (ternary)
 You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn’t change.
-### Why we need to be careful when spreading props on DOM elements??
-### How you use decorators in React?
-### How do you memoize a component?
-### How you implement Server-Side Rendering or SSR?
-### How to enable production mode in React?
-### What is the lifecycle methods order in mounting?
-### What are the lifecycle methods going to be deprecated in React v16?
-### What is the purpose of getDerivedStateFromProps() lifecycle method?
-### What is the purpose of getSnapshotBeforeUpdate() lifecycle method?
-### Do Hooks replace render props and higher order components?
-### What is the recommended way for naming components?
+### Why we need to be careful when spreading props on DOM elements?
+You should avoid spreading properties into a DOM element as it adds unknown HTML attribute, which is unnecessary and a bad practice.
+```
+const CommentsText = props => {
+    return (
+      <div {...props}>
+        {props.text}
+      </div>
+    );
+  };
+```
+Instead of spreading props, you can set specific attributes:
+```
+const CommentsText = props => {
+    return (
+      <div specificAttr={props.specificAttr}>
+        {props.text}
+      </div>
+    );
+};
+```
+
+
 # Refrences
 
 * https://reactjs.org/tutorial/tutorial.html
@@ -578,4 +590,4 @@ You can use variables to store elements. This can help you conditionally render 
 * https://www.geeksforgeeks.org/
 * https://iq.js.org/
 * https://www.blog.duomly.com/
-
+* https://www.codementor.io/
