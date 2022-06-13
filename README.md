@@ -605,6 +605,23 @@ The new name for this method is UNSAFE_componentWillUpdate.
 - Component names should be self-explanatory and it should help us understand what the component will achieve.
 - Use PascalCase for naming components in React and the file extension should be .jsx.
 - Component names should be same as the filename.
+What is the recommended ordering of methods in component class?
+Recommended ordering of methods from mounting to render stage:
+
+static methods
+constructor()
+getChildContext()
+componentWillMount()
+componentDidMount()
+componentWillReceiveProps()
+shouldComponentUpdate()
+componentWillUpdate()
+componentDidUpdate()
+componentWillUnmount()
+click handlers or event handlers like onClickSubmit() or onChangeDescription()
+getter methods for render like getSelectReason() or getFooterContent()
+optional render methods like renderNavigation() or renderProfilePicture()
+render()
 # Refrences
 
 * https://reactjs.org/tutorial/tutorial.html
