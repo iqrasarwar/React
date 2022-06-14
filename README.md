@@ -583,12 +583,13 @@ const CommentsText = props => {
 ```
 ### How you use decorators in React?
 ### How do you memoize a component?
+- using React.memo
+- using useMemo hook
 ### How you implement Server-Side Rendering or SSR?
 ### How to enable production mode in React?
 ### What is the lifecycle methods order in mounting?
 * render => componentWillMount => componentDidMount => componentWillUpdate => componentDidUpdate => componentWillUnmount
 * for mounting: constructor call, then it renders, then calls componentDidMount.
-*
 ### What are the lifecycle methods going to be deprecated in React v16?
 The methods that are deprecated are as follows:
 - componentWillMount
@@ -599,29 +600,40 @@ The new static method getDerivedStateFromProps is safe rewrite for this method a
 The new method getSnapshotBeforeUpdate is safe rewrite for this method and covers all the use cases of componentWillUpdate.
 The new name for this method is UNSAFE_componentWillUpdate.
 ### What is the purpose of getDerivedStateFromProps() lifecycle method?
+The method name getDerivedStateFromProps comprises five words: get derived state from props. Essentially, static getDerivedStateFromProps allows a component to update its internal state in response to a change in props.
 ### What is the purpose of getSnapshotBeforeUpdate() lifecycle method?
 ### Do Hooks replace render props and higher order components?
 ### What is the recommended way for naming components?
 - Component names should be self-explanatory and it should help us understand what the component will achieve.
 - Use PascalCase for naming components in React and the file extension should be .jsx.
 - Component names should be same as the filename.
-What is the recommended ordering of methods in component class?
+### What is the recommended ordering of methods in component class?
 Recommended ordering of methods from mounting to render stage:
-
-static methods
-constructor()
-getChildContext()
-componentWillMount()
-componentDidMount()
-componentWillReceiveProps()
-shouldComponentUpdate()
-componentWillUpdate()
-componentDidUpdate()
-componentWillUnmount()
-click handlers or event handlers like onClickSubmit() or onChangeDescription()
-getter methods for render like getSelectReason() or getFooterContent()
-optional render methods like renderNavigation() or renderProfilePicture()
-render()
+* static methods
+* constructor()
+* getChildContext()
+* componentWillMount()
+* componentDidMount()
+* componentWillReceiveProps()
+* shouldComponentUpdate()
+* componentWillUpdate()
+* componentDidUpdate()
+* componentWillUnmount()
+* click handlers or event handlers like onClickSubmit() or onChangeDescription()
+* getter methods for render like getSelectReason() or getFooterContent()
+* optional render methods like renderNavigation() or renderProfilePicture()
+* render()
+### What is a switching component?
+### Why we need to pass a function to setState()?
+The reason behind for this is that setState() is an asynchronous operation. React batches state changes for performance reasons, so the state may not change immediately after setState() is called. That means you should not rely on the current state when calling setState() since you can't be sure what that state will be. The solution is to pass a function to setState(), with the previous state as an argument. By doing this you can avoid issues with the user getting the old state value on access due to the asynchronous nature of setState().
+### What is strict mode in React?
+> StrictMode is a React Developer Tool primarily used for highlighting possible problems in a web application. It activates additional deprecation checks and warnings for its child components. One of the reasons for its popularity is the fact that it provides visual feedback (warning/error messages) whenever the React guidelines and recommended practices are not followed. Just like the React Fragment, the React StrictMode Component does not render any visible UI.
+> The React StrictMode can be viewed as a helper component that allows developers to code efficiently and brings to their attention any suspicious code which might have been accidentally added to the application. The StrictMode can be applied to any section of the application, not necessarily to the entire application. It is especially helpful to use while developing new codes or debugging the application.
+### What are React Mixins?
+### Why is isMounted() an anti-pattern and what is the proper solution?
+### What are the Pointer Events supported in React?
+### Why should component names start with capital letter?
+All React component names must start with a capital letter. If you start a component name with a lowercase letter, it will be treated like a built-in element like a <div> or a <span> . This is because of the way JSX works. In JSX, rendering a component that begins with a lowercase letter compiles down to React.
 # Refrences
 
 * https://reactjs.org/tutorial/tutorial.html
