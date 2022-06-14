@@ -634,6 +634,18 @@ The reason behind for this is that setState() is an asynchronous operation. Reac
 ### What are the Pointer Events supported in React?
 ### Why should component names start with capital letter?
 All React component names must start with a capital letter. If you start a component name with a lowercase letter, it will be treated like a built-in element like a <div> or a <span> . This is because of the way JSX works. In JSX, rendering a component that begins with a lowercase letter compiles down to React.
+What is React proptype array with shape?
+If you want to pass an array of objects to a component with a particular shape then use React.PropTypes.shape() as an argument to React.PropTypes.arrayOf().
+```
+ReactComponent.propTypes = {
+  arrayWithShape: React.PropTypes.arrayOf(
+    React.PropTypes.shape({
+      color: React.PropTypes.string.isRequired,
+      fontSize: React.PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+};
+```
 # Refrences
 
 * https://reactjs.org/tutorial/tutorial.html
